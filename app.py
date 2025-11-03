@@ -12,6 +12,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/') #homepage
 def home():
     return render_template('homepage.html')
+@app.route('/wardrobe')
+def wardrobe():
+    return render_template('wardrobe.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

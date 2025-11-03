@@ -48,6 +48,68 @@
         nav li a:hover {
             color: #628bb6; 
         }
+        .gallery {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .gallery h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+        .image-container {
+                width: 600px; /* Largeur fixe du cadre gris */
+                margin: 0 auto;
+                background-color: #e0e0e0;
+                padding: 10px;
+                border-radius: 5px;
+                overflow-x: auto; /* Active le défilement horizontal */
+                white-space: nowrap; /* Empêche les images de passer à la ligne */
+            }
+
+        .image-container img {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                margin-right: 10px;
+                display: inline-block; /* Permet aux images de s'aligner horizontalement */
+                border-radius: 5px;
+            }
+        .clothesMenu {
+                padding: 20px;
+                text-align: center;
+            }
+
+        .clothesMenu h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+        .clothesMenu ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+        .clothesMenu li {
+                margin: 10px 0;
+            }
+
+        .clothesMenu li a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 600;
+                padding: 10px 20px;
+                background-color: #fff;
+                border: 2px solid #ccc;
+                border-radius: 25px;
+                display: inline-block;
+                width: 200px;
+            }
+
+        .clothesMenu li a:hover {
+                background-color: #e0e0e0;
+            }
 
     </style>
 
@@ -67,9 +129,28 @@
                 <li><a href = "#">Suggestions</a></li>
             </ul>
         </nav>
-        
-        
+    
+         <div class="gallery">
+            <h2>Your latest items</h2>
+            <div class="image-container">
+                <img src="#" alt="Item 1">
+                <img src="#" alt="Item 2">
+                <img src="#" alt="Item 3">
+                <img src="#" alt="Item 4">
+                <img src="#" alt="Item 5">
+                <img src="#" alt="Item 6">
+            </div>
+        </div>
 
+        <div class="clothesMenu">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#">Tops</a></li>
+                <li><a href="#">Bottoms</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Footwear</a></li>
+            </ul>
+        </div>
     </body>
 </html>
 

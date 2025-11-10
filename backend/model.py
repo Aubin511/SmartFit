@@ -23,7 +23,7 @@ def detect_clothing(image_path):
     """
     function that takes an image as an input and returns the predicted type of cloth
     """
-    # Choisir un type de vêtement aléatoire
+    # Chose random category
     category = random.choice(CATEGORIES)
     return category
 
@@ -32,37 +32,39 @@ def detect_clothing(image_path):
 # ==========================
 wardrobe = []
 wardrobe_dict = {}
-
-def add_to_wardrobe(cloth):
-    wardrobe.append(cloth)
-    wardrobe_dict[cloth.image_path] = cloth.category
-    return ()
-
-image_path = "static/uploads/cloth_1.jpg"
-predicted_clothing = detect_clothing(image_path)
-print(predicted_clothing)
-clothing = Clothing(image_path)
-clothing.category = predicted_clothing
-print(clothing)
-add_to_wardrobe(clothing)
-print(wardrobe_dict)
-
-# store wardrobe into json file to be easily accessible
+json_file = "static/wardrobe_results.json"
 import os
 import json
+import random
+def add_to_wardrobe_json(cloth):
+    """Add a new image to wardrobe and update the JSON file"""
+    wardrobe.append(cloth)
+    wardrobe_dict[cloth.image_path] = cloth.category
+    # Load existing JSON if present
+    if os.path.exists(json_file):
+        with open(json_file, "r") as f:
+            try:
+                wardrobe_data = json.load(f)
+            except json.JSONDecodeError:
+                wardrobe_data = []
+    else:
+        wardrobe_data = []
+    #add new cloth to local memory
+    wardrobe_data.append({
+        "image": cloth.image_path,
+        "category": cloth.category
+    })
+    # Save updated JSON
+    with open(json_file, "w") as f:
+        json.dump(wardrobe_data, f, indent=4)
+    print(f"Added to : {cloth.image_path} -> {cloth.category}")
+    print(f"JSON updated : {json_file}")
 
-UPLOAD_FOLDER = "static/uploads/"
-results_file = "static/wardrobe_results.json"
-wardrobe_data = []
+# Exemple d'utilisation
 
-for cloth in wardrobe :
-        wardrobe_data.append({
-            "image": cloth.image_path,
-            "category": cloth.category
-        })
+image_path = "static/uploads/cloth_1.jpg"
+category = detect_clothing(image_path)
+cloth = Clothing(image_path, category)
+add_to_wardrobe_json(cloth)
 
-# Sauvegarde en JSON
-with open(results_file, "w") as f:
-    json.dump(wardrobe_data, f, indent=4)
-
-print("Données wardrobe sauvegardées dans wardrobe_results.json")
+print(wardrobe_dict)

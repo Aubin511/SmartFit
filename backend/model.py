@@ -1,3 +1,4 @@
+from datetime import datetime
 CATEGORIES = [
     "T-shirt",
     "Chemise",
@@ -36,6 +37,17 @@ json_file = "static/wardrobe_results.json"
 import os
 import json
 import random
+UPLOAD_FOLDER = "static/uploads/"
+
+def generate_unique_filename(base_name="cloth", ext=".jpg"):
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    return f"{base_name}_{timestamp}{ext}"
+def save_image(img, ext=".jpg"):
+    filename = generate_unique_filename(ext=ext)
+    path = os.path.join(UPLOAD_FOLDER, filename)
+    img.save(path)
+    return path
+
 def add_to_wardrobe_json(cloth):
     """Add a new image to wardrobe and update the JSON file"""
     wardrobe.append(cloth)

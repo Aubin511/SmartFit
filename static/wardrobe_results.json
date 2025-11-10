@@ -1,26 +1,10 @@
 [
     {
-        "image": "static/uploads/cloth_1.jpg",
-        "category": "Robe"
-    },
-    {
-        "image": "static/uploads/cloth_1.jpg",
+        "image": "static/uploads/cloth_20251110_171223_206636.jpg",
         "category": "Jupe"
     },
     {
-        "image": "static/uploads/tshirt.jpg",
-        "category": "Manteau"
-    },
-    {
-        "image": "static/uploads/cloth_1.jpg",
-        "category": "Manteau"
-    },
-    {
-        "image": "static/uploads/cloth_1.jpg",
-        "category": "Pantalon"
-    },
-    {
-        "image": "static/uploads/cloth_1.jpg",
-        "category": "Pull"
+        "image": "static/uploads/cloth_20251110_171257_713120.jpg",
+        "category": "Chaussures"
     }
 ]

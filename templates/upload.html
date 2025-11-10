@@ -9,9 +9,9 @@
         <input type="file" name="file" required>
         <button type="submit">Upload</button>
     </form>
-    {% if predicted_category %}
+    {% if predicted_category and filepath%}
         <h2>Detected category: {{ predicted_category }}</h2>
-        <img src="{{ url_for('static', filename='uploads/' + request.files['file'].filename) }}" 
+        <img src="{{ url_for('static', filename=(filepath).replace('static/', '')) }}" 
              alt="Uploaded image" width="300">
     {% endif %}
 

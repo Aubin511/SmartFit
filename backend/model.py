@@ -47,6 +47,7 @@ print(clothing)
 add_to_wardrobe(clothing)
 print(wardrobe_dict)
 
+# store wardrobe into json file to be easily accessible
 import os
 import json
 

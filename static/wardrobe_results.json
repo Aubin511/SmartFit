@@ -18,5 +18,9 @@
     {
         "image": "static/uploads/cloth_1.jpg",
         "category": "Pantalon"
+    },
+    {
+        "image": "static/uploads/cloth_1.jpg",
+        "category": "Pull"
     }
 ]

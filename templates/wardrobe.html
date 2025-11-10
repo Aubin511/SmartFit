@@ -1,6 +1,6 @@
 <html>
     <head>  
-        <title> SmartFit </title>
+        <title> Wardrobe - SmartFit </title>
     </head>
     
     <style>
@@ -54,7 +54,7 @@
     <body> 
         <div class="header">
             <nav> 
-                <h1><a href = "/templates/homepage.html"> SMART FIT</a></h1>
+                <h1><a href = "{{ url_for('homepage') }}"> SMART FIT</a></h1>
             </nav>
         </div>
         
@@ -62,7 +62,7 @@
          <!-- On mettra les liens des autres pages à la place des # -->
         <nav> <!-- nav indique un lien cliquable -->
             <ul> <!-- liste à points -->
-                <li><a href = "/templates/wardrobe.html">My wardrobe</a></li>
+                <li><a href = "{{ url_for('wardrobe') }}">My wardrobe</a></li>
                 <li><a href = "#">Upload</a></li>
                 <li><a href = "#">Suggestions</a></li>
             </ul>

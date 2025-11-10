@@ -1,0 +1,22 @@
+[
+    {
+        "image": "static/uploads/cloth_1.jpg",
+        "category": "Robe"
+    },
+    {
+        "image": "static/uploads/cloth_1.jpg",
+        "category": "Jupe"
+    },
+    {
+        "image": "static/uploads/tshirt.jpg",
+        "category": "Manteau"
+    },
+    {
+        "image": "static/uploads/cloth_1.jpg",
+        "category": "Manteau"
+    },
+    {
+        "image": "static/uploads/cloth_1.jpg",
+        "category": "Pantalon"
+    }
+]

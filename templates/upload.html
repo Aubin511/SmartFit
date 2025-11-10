@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload - SmartFit</title>
+</head>
+<body>
+    <h1>Upload a new clothing image</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+    {% if predicted_category %}
+        <h2>Detected category: {{ predicted_category }}</h2>
+        <img src="{{ url_for('static', filename='uploads/' + request.files['file'].filename) }}" 
+             alt="Uploaded image" width="300">
+    {% endif %}
+
+    <a href="{{ url_for('wardrobe') }}">Go to wardrobe</a>
+</body>
+</html>

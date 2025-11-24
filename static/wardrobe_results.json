@@ -26,5 +26,17 @@
     {
         "image": "static/uploads/cloth_20251124_124126_180495.jpg",
         "category": "T-shirt"
+    },
+    {
+        "image": "static/uploads/cloth_1.jpg",
+        "category": "T-shirt"
+    },
+    {
+        "image": "static/uploads/cloth_1.jpg",
+        "category": "Robe"
+    },
+    {
+        "image": "static/uploads/cloth_20251124_140959_624668.jpg",
+        "category": "Chaussures"
     }
 ]

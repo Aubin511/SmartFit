@@ -7,59 +7,54 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import numpy as np
 
-# ================= CONFIGURATION =================
+# ----------------- CONFIGURATION -----------------
 DATA_DIR = "data_split/val"
 MODEL_PATH = "backend/finetuned_model.pth"
-CLASSES_PATH = "backend/classes.txt"
+CLASSES_PATH = "backend/classes_80_24112025.txt"
 BATCH_SIZE = 32
-# =================================================
+
 
 def evaluate():
-    # 1. Setup
+    #------- Set up -----
     device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
-    print(f"Test sur : {device}")
+    print(f"Test on : {device}")
 
-    # 2. Recharger les transformations (Doit être identique à l'entraînement, sans augmentation)
+    # Transform, as in training (without data augmentation)
     data_transforms = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    # 3. Charger les données de test
-    if not os.path.exists(DATA_DIR):
-        print(f"Dossier {DATA_DIR} introuvable.")
-        return
-
+    # Upload val data
     test_dataset = datasets.ImageFolder(DATA_DIR, data_transforms)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
     
-    # Récupérer les noms des classes depuis le dossier (ou le fichier txt)
+    # Get classes names from dataset
     class_names = test_dataset.classes
     print(f"Classes : {class_names}")
 
-    # 4. Recharger le modèle (Architecture + Poids)
-    print("Chargement du modèle...")
-    model = models.resnet18(weights=None) # On ne charge pas ImageNet, on va charger NOS poids
+    # Upload original model
+    print("Uploading Resnet18...")
+    model = models.resnet18(weights=None) #we will put our own weights
     num_ftrs = model.fc.in_features
     model.fc = nn.Linear(num_ftrs, len(class_names))
     
-    # Charger tes poids sauvegardés
+    # Upload retrained model
     if os.path.exists(MODEL_PATH):
         model.load_state_dict(torch.load(MODEL_PATH, map_location=device))
     else:
-        print("Modèle non trouvé !")
+        print("Model not found")
         return
 
     model = model.to(device)
-    model.eval() # IMPORTANT
+    model.eval()
 
-    # 5. Boucle de prédiction
+    # ------ Prediction part ------
     all_preds = []
     all_labels = []
 
-    print("Calcul des prédictions...")
-    with torch.no_grad(): # Pas besoin de gradients pour le test (économie mémoire)
+    with torch.no_grad():
         for inputs, labels in test_loader:
             inputs = inputs.to(device)
             labels = labels.to(device)
@@ -70,11 +65,9 @@ def evaluate():
             all_preds.extend(preds.cpu().numpy())
             all_labels.extend(labels.cpu().numpy())
 
-    # 6. Métriques
-    # Calculer l'accuracy
     correct_predictions = np.sum(np.array(all_preds) == np.array(all_labels))
     accuracy = correct_predictions / len(all_labels)
-    print(f"\n📊 Précision Globale (Accuracy) : {accuracy * 100:.2f}%")
+    print(f"\n Précision Globale (Accuracy) : {accuracy * 100:.2f}%")
 
 if __name__ == "__main__":
     evaluate()

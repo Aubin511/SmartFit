@@ -5,7 +5,7 @@ import os
 
 # CONFIG
 IMG_PATH = "static/uploads/sweat-shirt-capuche-dryblend.jpg" # Mets une image ici pour tester
-MODEL_PATH = "backend/finetuned_model.pth"
+MODEL_PATH = "backend/finetuned_model_80_24112025.pth"
 CLASSES_PATH = "backend/classes.txt"
 
 def predict_single_image(IMG_PATH,MODEL_PATH,CLASSES_PATH):

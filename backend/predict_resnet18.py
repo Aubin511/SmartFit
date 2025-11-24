@@ -42,8 +42,7 @@ def predict_single_image(img_path,model_path = MODEL_PATH, classes_path = CLASSE
 
         # Get more detailed prediction in case it is less thant 50% confidence
         if conf.item() < 0.5:
-            print("Low confidence, here is top 3...")
-            # Get 3 best predictions
+            # Low confidence : Get 3 best predictions
             top_probs, top_idxs = torch.topk(probabilities, 3)
             
             top_3_results = []
@@ -53,13 +52,12 @@ def predict_single_image(img_path,model_path = MODEL_PATH, classes_path = CLASSE
                 label = class_names[idx]
                 top_3_results.append((label, prob))
                 
-            #exemple of use
-            print(top_3_results) 
+            return(top_3_results) 
         else:
             predicted_label = class_names[predicted_idx]
             print(f"Prédiction : {predicted_label}")
             print(f"Confiance : {conf.item() * 100:.2f}%")
-        return(predicted_label)
+            return(predicted_label)
 
 if __name__ == "__main__":
     predict_single_image(IMG_PATH,MODEL_PATH,CLASSES_PATH)

@@ -17,7 +17,7 @@ class Clothing:
     def __init__(self, image_path, category = None):
         self.category = category
         self.image_path = image_path
-    def __repr__(self): #used with print command
+    def __repr__(self):
         return f"{self.category}"
 
 def detect_clothing(image_path):
@@ -36,7 +36,7 @@ wardrobe_dict = {}
 json_file = "static/wardrobe_results.json"
 import os
 import json
-import random
+
 UPLOAD_FOLDER = "static/uploads/"
 
 def generate_unique_filename(base_name="cloth", ext=".jpg"):
@@ -72,10 +72,11 @@ def add_to_wardrobe_json(cloth):
     print(f"Added to : {cloth.image_path} -> {cloth.category}")
     print(f"JSON updated : {json_file}")
 
-# Exemple d'utilisation
-image_path = "static/uploads/cloth_20251110_171257_713120.jpg"
-category = detect_clothing(image_path)
-cloth = Clothing(image_path, category)
-add_to_wardrobe_json(cloth)
+if __name__ == "__main__":
+    # Exemple d'utilisation
+    image_path = "static/uploads/cloth_20251110_171257_713120.jpg"
+    category = detect_clothing(image_path)
+    cloth = Clothing(image_path, category)
+    add_to_wardrobe_json(cloth)
 
-print(wardrobe_dict)
+    print(wardrobe_dict)

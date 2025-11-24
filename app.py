@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
-from backend.model_resnet18 import Clothing, detect_clothing, add_to_wardrobe_json, save_image
+from backend.prediction_model_resnet18 import Clothing, detect_clothing, add_to_wardrobe_json, save_image
 
 app = Flask(__name__)
 

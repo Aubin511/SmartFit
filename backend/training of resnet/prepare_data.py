@@ -79,10 +79,10 @@ def prepare_dataset():
             print(f"Traitement... {index} images vues")
 
     print("\n--- Bilan ---")
-    print(f"✅ Images triées et copiées : {count_success}")
-    print(f"🚫 Images ignorées (catégories inutiles) : {count_ignored}")
-    print(f"⚠️ Images manquantes (dans CSV mais pas dossier) : {count_missing}")
-    print(f"📁 Données prêtes dans : {TARGET_DIR}")
+    print(f"Images triées et copiées : {count_success}")
+    print(f"Images ignorées (catégories inutiles) : {count_ignored}")
+    print(f"Images manquantes (dans CSV mais pas dossier) : {count_missing}")
+    print(f"Données prêtes dans : {TARGET_DIR}")
 
 if __name__ == "__main__":
     prepare_dataset()

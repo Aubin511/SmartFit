@@ -10,7 +10,7 @@ import numpy as np
 # ----------------- CONFIGURATION -----------------
 DATA_DIR = "data_split/val"
 MODEL_PATH = "backend/finetuned_model.pth"
-CLASSES_PATH = "backend/classes_80_24112025.txt"
+CLASSES_PATH = "backend/classes.txt"
 BATCH_SIZE = 32
 
 
@@ -67,7 +67,7 @@ def evaluate():
 
     correct_predictions = np.sum(np.array(all_preds) == np.array(all_labels))
     accuracy = correct_predictions / len(all_labels)
-    print(f"\n Précision Globale (Accuracy) : {accuracy * 100:.2f}%")
+    print(f"\n Accuracy : {accuracy * 100:.2f}%")
 
 if __name__ == "__main__":
     evaluate()

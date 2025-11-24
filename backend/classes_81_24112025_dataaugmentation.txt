@@ -1,0 +1,11 @@
+Chapeau
+Chaussures
+Chemise
+Jupe
+Manteau
+Pantalon
+Pull
+Robe
+Short
+T-shirt
+Veste

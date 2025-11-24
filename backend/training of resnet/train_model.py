@@ -31,7 +31,7 @@ def train():
     # Data transormation for Resnet compatibility
     data_transforms = transforms.Compose([
         transforms.Resize((224, 224)),      #Resnet input
-        #transforms.RandomHorizontalFlip(),  # Data augmentation TO ACTIVATE LATER
+        #transforms.RandomHorizontalFlip(),  # Data augmentation : useless, only  76.91% on val for Training lasted 19m 54s, against 75.42%
         transforms.ToTensor(),              
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]) # ImageNet Standardisation
     ])

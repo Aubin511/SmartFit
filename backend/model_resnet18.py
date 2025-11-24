@@ -1,5 +1,5 @@
 from datetime import datetime
-from predict_resnet18 import predict_single_image
+from backend.predict_resnet18 import predict_single_image
 CATEGORIES = [
     "T-shirt",
     "Chemise",

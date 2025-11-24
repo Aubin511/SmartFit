@@ -8,7 +8,7 @@ IMG_PATH = "static/uploads/cloth_20251110_171257_713120.jpg" # Mets une image ic
 MODEL_PATH = "backend/finetuned_model_80_24112025.pth"
 CLASSES_PATH = "backend/classes_80_24112025.txt"
 
-def predict_single_image(img_path,model_path = MODEL_PATH,classes_path = CLASSES_PATH):
+def predict_single_image(img_path,model_path = MODEL_PATH, classes_path = CLASSES_PATH):
     #---- Set up ----
     # load classes
     with open(classes_path, "r") as f:
@@ -39,7 +39,7 @@ def predict_single_image(img_path,model_path = MODEL_PATH,classes_path = CLASSES
         conf, predicted_idx = torch.max(probabilities, 0)
         print(f"Image : {IMG_PATH}")
         predicted_label = class_names[predicted_idx]
-        
+
         # Get more detailed prediction in case it is less thant 50% confidence
         if conf.item() < 0.5:
             print("Low confidence, here is top 3...")

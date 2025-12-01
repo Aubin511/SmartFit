@@ -54,7 +54,7 @@ def train():
     for param in model.parameters():
         param.requires_grad = False
 
-    # replace head with out categories
+    # replace only fully connected layer with our categories
     num_ftrs = model.fc.in_features
     model.fc = nn.Linear(num_ftrs, num_classes)
 
@@ -66,7 +66,7 @@ def train():
 
     since = time.time()
     for epoch in range(NUM_EPOCHS):
-        print(f'\nEpoch {epoch+1}/{NUM_EPOCHS}')
+        print(f'Epoch {epoch+1}/{NUM_EPOCHS}')
         print('-' * 10)
         model.train()
         running_loss = 0.0

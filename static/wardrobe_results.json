@@ -50,5 +50,76 @@
     {
         "image": "static/uploads/cloth_20251201_131511_204863.jpg",
         "category": "Manteau"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_132148_989691.jpg",
+        "category": "Chemise"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_132154_906480.jpg",
+        "category": [
+            [
+                "Manteau",
+                0.40132609009742737
+            ],
+            [
+                "T-shirt",
+                0.1730402410030365
+            ],
+            [
+                "Pull",
+                0.16679738461971283
+            ]
+        ]
+    },
+    {
+        "image": "static/uploads/cloth_20251201_133226_592960.jpg",
+        "category": [
+            [
+                "Robe",
+                0.30301207304000854
+            ],
+            [
+                "T-shirt",
+                0.24602192640304565
+            ],
+            [
+                "Chemise",
+                0.20200973749160767
+            ]
+        ]
+    },
+    {
+        "image": "static/uploads/cloth_20251201_133232_007630.jpg",
+        "category": "Chemise"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_133240_504344.jpg",
+        "category": "Chemise"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_133249_658387.jpg",
+        "category": "Chemise"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_133648_307010.jpg",
+        "category": [
+            [
+                "Robe",
+                0.30301207304000854
+            ],
+            [
+                "T-shirt",
+                0.24602192640304565
+            ],
+            [
+                "Chemise",
+                0.20200973749160767
+            ]
+        ]
+    },
+    {
+        "image": "static/uploads/cloth_20251201_134120_572839.jpg",
+        "category": "Chemise"
     }
 ]

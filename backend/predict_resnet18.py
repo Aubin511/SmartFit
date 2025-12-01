@@ -3,13 +3,12 @@ from torchvision import models, transforms
 from PIL import Image
 import os
 
-# --- Parameters ---
-IMG_PATH = "static/uploads/cloth_20251110_171257_713120.jpg" # Mets une image ici pour tester
+# Parameters
+IMG_PATH = "static/uploads/cloth_20251110_171257_713120.jpg"
 MODEL_PATH = "backend/finetuned_model_80_24112025.pth"
 CLASSES_PATH = "backend/classes_80_24112025.txt"
 
 def predict_single_image(img_path,model_path = MODEL_PATH, classes_path = CLASSES_PATH):
-    #---- Set up ----
     # load classes
     with open(classes_path, "r") as f:
         class_names = [line.strip() for line in f.readlines()]
@@ -21,7 +20,6 @@ def predict_single_image(img_path,model_path = MODEL_PATH, classes_path = CLASSE
     model.load_state_dict(torch.load(model_path, map_location=device))
     model.eval()
 
-    # ---- Predict part ----  
     transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),

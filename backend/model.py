@@ -1,4 +1,5 @@
 from datetime import datetime
+from backend.database import Clothing
 CATEGORIES = [
     "T-shirt",
     "Chemise",
@@ -70,4 +71,11 @@ def add_to_wardrobe_json(cloth):
     with open(json_file, "w") as f:
         json.dump(wardrobe_data, f, indent=4)
     print(f"Added to : {cloth.image_path} -> {cloth.category}")
+<<<<<<< HEAD
     print(f"JSON updated : {json_file}")
+=======
+    print(f"JSON updated : {json_file}")
+
+
+print(wardrobe_dict)
+>>>>>>> hermione

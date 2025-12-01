@@ -4,20 +4,7 @@
         "category": "T-shirt"
     },
     {
-        "image": "static/uploads/cloth_20251201_141659_365240.jpg",
-        "category": [
-            [
-                "Robe",
-                0.30301207304000854
-            ],
-            [
-                "T-shirt",
-                0.24602192640304565
-            ],
-            [
-                "Chemise",
-                0.20200973749160767
-            ]
-        ]
+        "image": "static/uploads/cloth_1.jpg",
+        "category": "Veste"
     }
 ]

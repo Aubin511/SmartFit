@@ -133,12 +133,22 @@
          <div class="gallery">
             <h2>Your latest items</h2>
             <div class="image-container">
-                <img src="#" alt="Item 1">
-                <img src="#" alt="Item 2">
-                <img src="#" alt="Item 3">
-                <img src="#" alt="Item 4">
-                <img src="#" alt="Item 5">
-                <img src="#" alt="Item 6">
+                
+                {% if clothes %}
+                    {% for item in clothes %}
+                        {% set relative_path = item.image_path.replace('static/', '') %}
+                        
+                        <div class="item-card">
+                            <img src="{{ url_for('static', filename=relative_path) }}" 
+                                 alt="{{ item.category }}">
+                            
+                            <p>{{ item.category }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p style="white-space: normal;">Votre garde-robe est vide. 🧺 <a href="{{ url_for('upload') }}">Ajoutez un vêtement</a> !</p>
+                {% endif %}
+
             </div>
         </div>
 

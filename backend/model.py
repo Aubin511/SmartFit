@@ -1,4 +1,5 @@
 from datetime import datetime
+from backend.database import Clothing
 CATEGORIES = [
     "T-shirt",
     "Chemise",
@@ -12,12 +13,6 @@ CATEGORIES = [
     "Chaussures"
 ]
 
-class Clothing:
-    def __init__(self, image_path, category = None):
-        self.category = category
-        self.image_path = image_path
-    def __repr__(self): #used with print command
-        return f"{self.category}"
 import random
 
 def detect_clothing(image_path):
@@ -72,10 +67,3 @@ def add_to_wardrobe_json(cloth):
     print(f"Added to : {cloth.image_path} -> {cloth.category}")
     print(f"JSON updated : {json_file}")
 
-# Exemple d'utilisation
-image_path = "static/uploads/cloth_1.jpg"
-category = detect_clothing(image_path)
-cloth = Clothing(image_path, category)
-add_to_wardrobe_json(cloth)
-
-print(wardrobe_dict)

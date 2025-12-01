@@ -1,8 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
-from backend.model import Clothing, detect_clothing, add_to_wardrobe_json, save_image
+from backend.model import detect_clothing, add_to_wardrobe_json, save_image
+from backend.database import db, Clothing, init_db_app 
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///macollection.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+#init database
+init_db_app(app) 
 
 # dossier de sauvegarde des images uploadées
 UPLOAD_FOLDER = 'static/uploads'
@@ -23,13 +30,16 @@ def upload():
         if file :
             filepath = save_image(file)
             category = detect_clothing(filepath)
-            cloth = Clothing(filepath, category)
-            add_to_wardrobe_json(cloth)
+            new_item = Clothing(image_path=filepath, category=category)
+            db.session.add(new_item)
+            db.session.commit()
+        
     return render_template('upload.html',predicted_category=category, filepath=filepath)
 
 @app.route('/wardrobe')
 def wardrobe():
-    return render_template('wardrobe.html')
-
+    all_clothes = Clothing.query.all()
+    
+    return render_template('wardrobe.html', clothes=all_clothes)
 if __name__ == '__main__':
     app.run(debug=True)

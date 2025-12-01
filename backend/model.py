@@ -71,11 +71,3 @@ def add_to_wardrobe_json(cloth):
         json.dump(wardrobe_data, f, indent=4)
     print(f"Added to : {cloth.image_path} -> {cloth.category}")
     print(f"JSON updated : {json_file}")
-
-# Exemple d'utilisation
-image_path = "static/uploads/cloth_1.jpg"
-category = detect_clothing(image_path)
-cloth = Clothing(image_path, category)
-add_to_wardrobe_json(cloth)
-
-print(wardrobe_dict)

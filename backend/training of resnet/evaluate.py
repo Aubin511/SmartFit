@@ -2,12 +2,8 @@ import torch
 import torch.nn as nn
 from torchvision import datasets, models, transforms
 import os
-import matplotlib.pyplot as plt
-
-from sklearn.metrics import confusion_matrix
 import numpy as np
 
-# ----------------- CONFIGURATION -----------------
 DATA_DIR = "data_split/val"
 MODEL_PATH = "backend/finetuned_model.pth"
 CLASSES_PATH = "backend/classes.txt"
@@ -15,27 +11,23 @@ BATCH_SIZE = 32
 
 
 def evaluate():
-    #------- Set up -----
     device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     print(f"Test on : {device}")
 
-    # Transform, as in training (without data augmentation)
+    # Transform, as in training
     data_transforms = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    # Upload val data
     test_dataset = datasets.ImageFolder(DATA_DIR, data_transforms)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
     
-    # Get classes names from dataset
     class_names = test_dataset.classes
     print(f"Classes : {class_names}")
 
     # Upload original model
-    print("Uploading Resnet18...")
     model = models.resnet18(weights=None) #we will put our own weights
     num_ftrs = model.fc.in_features
     model.fc = nn.Linear(num_ftrs, len(class_names))
@@ -50,7 +42,6 @@ def evaluate():
     model = model.to(device)
     model.eval()
 
-    # ------ Prediction part ------
     all_preds = []
     all_labels = []
 

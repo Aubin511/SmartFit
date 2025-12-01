@@ -2,5 +2,53 @@
     {
         "image": "static/uploads/cloth_1.jpg",
         "category": "Pantalon"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130328_247100.jpg",
+        "category": "Chapeau"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130334_463532.jpg",
+        "category": "Chapeau"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130341_638628.jpg",
+        "category": "Chaussures"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130350_111104.jpg",
+        "category": "Chapeau"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130403_583309.jpg",
+        "category": "Pull"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130407_380678.jpg",
+        "category": "Pull"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130416_794008.jpg",
+        "category": "Pull"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130421_317554.jpg",
+        "category": "Short"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_130432_030612.jpg",
+        "category": "Jupe"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_131314_375696.jpg",
+        "category": "Jupe"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_131343_201920.jpg",
+        "category": "T-shirt"
+    },
+    {
+        "image": "static/uploads/cloth_20251201_131511_204863.jpg",
+        "category": "Manteau"
     }
 ]

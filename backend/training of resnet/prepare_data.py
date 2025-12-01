@@ -2,16 +2,15 @@ import pandas as pd
 import os
 import shutil
 
-# --- CONFIGURATION ---
-# Path to dowload files from Kaggle
+# dowload files from Kaggle
 SOURCE_CSV = "temp_download/images.csv"
 SOURCE_IMAGES_DIR = "temp_download/images_original"
 
 # train_data path
 TARGET_DIR = "data/train"
 
-# --- MAPPING (Translate categories from Kaggle to our Categories) ---
-# ignores categories : "Other", "Not sure", "Skip"
+# Translate categories from Kaggle to our Categories
+# and ignores categories : "Other", "Not sure", "Skip"
 CATEGORY_MAPPING = {
     "t-shirt": "T-shirt",
     "pants": "Pantalon", 
@@ -28,7 +27,7 @@ CATEGORY_MAPPING = {
 }
 
 def prepare_dataset():
-    print("--- Start Data filter ---")
+    print("Start Data filter")
 
     if not os.path.exists(SOURCE_CSV):
         print(f"Error : File {SOURCE_CSV} inexistant.")

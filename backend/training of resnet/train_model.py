@@ -6,9 +6,7 @@ import os
 import time
 
 
-# Configuration
-
-# train set of data
+# train data set
 DATA_DIR = "data_split/train" 
 
 # Path to save trained model
@@ -22,7 +20,7 @@ NUM_EPOCHS = 10
 LEARNING_RATE = 0.001
 
 def train():
-    print(f"--- Start training ---")
+    print(f"Start training")
 
     # detect device depending on processor
     device = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
@@ -37,10 +35,6 @@ def train():
     ])
 
     # Upload (homemade) dataset
-    if not os.path.exists(DATA_DIR):
-        print(f"Erreur : Le dossier {DATA_DIR} n'existe pas.")
-        return
-
     image_dataset = datasets.ImageFolder(DATA_DIR, data_transforms)
     
     dataloader = torch.utils.data.DataLoader(image_dataset, batch_size=BATCH_SIZE, shuffle=True)
@@ -51,27 +45,23 @@ def train():
 
     print(f"Dataset size : {dataset_size} images")
     print(f"Classes detected ({num_classes}) : {class_names}")
-    #------ TRANSFER LEARNING ---- 
-    # Transfer learning from Resnet18
-    print("Upload Pretrained Resnet18...")    
-    # upload model with wieghts from ImageNet
+
+    print("Uploading Pretrained Resnet18")    
+    # upload model with weights from ImageNet
     model = models.resnet18(weights='IMAGENET1K_V1')
 
-    # AVOID COMPLETELY NEW LEARNING
+    # avoid new learning
     for param in model.parameters():
         param.requires_grad = False
 
-    # REPLACE HEAD WITH OUR CATEGORIES
+    # replace head with out categories
     num_ftrs = model.fc.in_features
     model.fc = nn.Linear(num_ftrs, num_classes)
 
     model = model.to(device)
-    # ---------------------------------------------------------
-    # TRAINING PART
-    # ---------------------------------------------------------
-    
+
     criterion = nn.CrossEntropyLoss()
-    # optimize : only update last layer
+    # optimize and only update last layer
     optimizer = optim.Adam(model.fc.parameters(), lr=LEARNING_RATE)
 
     since = time.time()
@@ -103,11 +93,10 @@ def train():
         print(f'Loss: {epoch_loss:.4f} Acc: {epoch_acc:.4f}')
 
     time_elapsed = time.time() - since
-    print(f'\n Training lasted {time_elapsed // 60:.0f}m {time_elapsed % 60:.0f}s')
+    print(f'Training lasted {time_elapsed // 60:.0f}m {time_elapsed % 60:.0f}s')
     print(f'Final accuracy: {epoch_acc:.4f}')
 
-    # ----------------- Save model -----------------
-
+    #Save model
     if not os.path.exists(SAVE_DIR):
         os.makedirs(SAVE_DIR)
     
